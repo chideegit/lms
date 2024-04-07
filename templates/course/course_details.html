@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">{{course.title}}</i></h1>
+        <p class="col-md-8">
+            {{course.description}}
+        </p>
+        {% if not has_enrolled %}
+        <a href="{% url 'enrol-course' course.pk %}" class="btn btn-primary btn-lg" type="button">Enrol Course</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="mb-3">
+    <h3>Course Modules</h3>
+</div>
+
+{% if has_enrolled %}
+
+<div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for module in modules %}
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{module.title}}</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional
+                        content. This content is a little bit longer.</p>
+
+                    <a href="{% url 'module-details' module.pk %}" class="btn btn-primary btn-sm w-100">Start Module</a>
+                </div>
+                <!-- <div class="card-footer">
+                    <small class="text-muted">Published 3 mins ago</small>
+                </div> -->
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% else %}
+<div class="alert alert-warning" role="alert">
+    Please enrol for this course to see modules.
+</div>
+{% endif %}
+
+{% endblock content %}

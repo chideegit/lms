@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold mb-3">{{module.title}}</i></h1>
+        <a href="{% url 'course-details' module.course.pk %}" class="btn btn-primary btn-sm" type="button">Back to Course Content</a>
+    </div>
+</div>
+
+<div class="mb-5">
+    {{module.content}}
+</div>
+
+{% if not is_complete %}
+<a href="{% url 'mark-as-completed' module.pk %}" class="btn btn-outline-primary btn-sm" type="button">Mark as Complete</a>
+{% else %}
+<div class="alert alert-warning" role="alert">
+    You have marked this module as completed!
+</div>
+{% endif %}
+{% endblock content %}

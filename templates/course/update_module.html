@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Update Module Information</i></h1>
+        <p class="col-md-8 fs-4">
+           Here you can make changes to module information and add/remove details from it. 
+        </p>
+    </div>
+</div>
+
+<div>
+    <form class="p-4 p-md-5 border rounded-3 bg-light" method="POST">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            {% render_field form.course class="form-control" %}
+            <label for="floatingInput">Select Course</label>
+        </div>
+        <div class="form-floating mb-3">
+            {% render_field form.title class="form-control" %}
+            <label for="floatingInput">Module Title</label>
+        </div>
+        <div class="form-floating mb-3">
+            {% render_field form.content class="form-control" %}
+            <label for="floatingInput">Content</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+    </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %} 
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">All Modules for <i>{{course.title}}</i></h1>
+        <p class="col-md-8 fs-4">
+            View all the modules associated with this course. You can easily make changes to them from here.
+        </p>
+    </div>
+</div>
+
+<div>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Module Title</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for module in modules %}
+                    <tr>
+                        <th>{{module.title}}</th>
+                        <td>
+                            <a href="{% url 'update-module' module.pk %}" class="btn btn-primary btn-sm"><i
+                                    class="fa fa-pencil"></i></a>
+                            <a href="{% url 'delete-module' module.pk %}" class="btn btn-danger btn-sm"><i
+                                    class="fa fa-trash"></i></a>
+                            <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-eye"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

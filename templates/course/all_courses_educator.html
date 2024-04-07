@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">All Courses (Educator's View)</h1>
+        <p class="col-md-8 fs-4">
+            The table below contains a list of all course you have curated over time for your students.
+        </p>
+    </div>
+</div>
+
+<div>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Course Title</th>
+                        <th scope="col">Modules</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Enrolled Students</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course in courses %}
+                    <tr>
+                        <th>{{course.title}}</th>
+                        <td>{{course.module_set.all.count}}
+                            <a href="{% url 'add-module' course.pk %}" class="btn btn-primary btn-sm ms-2"><i class="fa fa-plus"></i></a>
+                            <a href="{% url 'modules-per-course' course.pk %}" class="btn btn-warning btn-sm"><i class="fa fa-eye"></i></a>
+                        </td>
+                        {% if course.is_available %}
+                        <td><span class="badge bg-success">Available</span></td>
+                        {% else %}
+                        <td><span class="badge bg-warning">Draft</span></td>
+                        {% endif %}
+                        <td>{{course.enrolcourse_set.all.count}}
+                            <a href="{% url 'students-per-course' course.pk %}" class="btn btn-warning btn-sm ms-2"><i class="fa fa-eye"></i></a>
+                        </td>
+                        <td>
+                            <a href="{% url 'update-course' course.pk %}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                            <a href="{% url 'delete-course' course.pk %}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
