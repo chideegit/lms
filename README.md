@@ -7,7 +7,6 @@ Django LMS allows you to curate courses for your students and track learning pro
 - [Project Title](#project-title)
 - [Description](#description)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
@@ -51,9 +50,6 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
-
-## Usage
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hANTFU1xd0Y?si=qnAqAIA0bUEqjbll" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Contributing
 If you would like to contribute to the project, please follow the guidelines outlined in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
